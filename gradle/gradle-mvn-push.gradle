@@ -1,0 +1,68 @@
+apply plugin: "com.vanniktech.maven.publish"
+
+private def getLocalProperty(String key) {
+  Properties properties = new Properties()
+  InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream() ;
+  properties.load( inputStream )
+  def value = properties.getProperty(key)
+  inputStream.close()
+  return value
+}
+
+private def getLocalProperty(String key, String defaultValue) {
+  String value = getLocalProperty(key)
+  if (null != value) {
+    return value
+  } else {
+    return defaultValue
+  }
+}
+
+private def resolveReleaseRepositoryUrl() {
+  return getLocalProperty("RELEASE_REPOSITORY_URL", "https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+}
+
+private def resolveSnapshotRepositoryUrl() {
+  return getLocalProperty("SNAPSHOT_REPOSITORY_URL", "https://oss.sonatype.org/content/repositories/snapshots/")
+}
+
+private def resolveRepositoryUsername() {
+  return getLocalProperty("REPOSITORY_USERNAME", null)
+}
+
+private def resolveRepositoryPassword() {
+  return getLocalProperty("REPOSITORY_PASSWORD", null)
+}
+
+mavenPublish {
+  releaseSigningEnabled = !getGpgKey().isEmpty()
+
+  targets {
+    installArchives {
+      releaseRepositoryUrl = file("${rootProject.buildDir}/localMaven").toURI().toString()
+      snapshotRepositoryUrl = file("${rootProject.buildDir}/localMaven").toURI().toString()
+    }
+    // Modify the existing uploadArchives task
+    uploadArchives {
+      releaseRepositoryUrl = resolveReleaseRepositoryUrl()
+      snapshotRepositoryUrl = resolveSnapshotRepositoryUrl()
+      repositoryUsername = resolveRepositoryUsername() // This defaults to either the SONATYPE_NEXUS_USERNAME Gradle property or the system environment variable.
+      repositoryPassword = resolveRepositoryPassword() // This defaults to either the SONATYPE_NEXUS_PASSWORD Gradle property or the system environment variable.
+    }
+  }
+}
+
+if (project.plugins.hasPlugin("org.jetbrains.kotlin.multiplatform")) {
+  apply from: rootProject.file("gradle/gradle-mvn-mpp-push.gradle")
+}
+
+def getGpgKey() {
+  return hasProperty('signingKey') ? signingKey : ""
+}
+
+signing {
+  def signingKey = getGpgKey()
+  if (!signingKey.isEmpty()) {
+    useInMemoryPgpKeys(signingKey, "")
+  }
+}

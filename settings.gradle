@@ -1,0 +1,6 @@
+rootProject.name = 'HackerTools'
+
+include ':hacker-tools'
+
+enableFeaturePreview('GRADLE_METADATA')
+enableFeaturePreview('STABLE_PUBLISHING')

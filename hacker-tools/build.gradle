@@ -1,0 +1,60 @@
+apply plugin: 'org.jetbrains.kotlin.multiplatform'
+apply plugin: 'kotlinx-serialization'
+
+// TODO work around for https://youtrack.jetbrains.com/issue/KT-27170
+configurations {
+  compileClasspath
+}
+
+kotlin {
+  sourceSets {
+    commonMain {
+      dependencies {
+        implementation deps.kotlin.stdlib.common
+
+        implementation deps.kotlin.coroutines.common
+        implementation deps.kotlin.ktor.core
+        implementation deps.kotlin.ktor.logging
+        implementation deps.kotlin.ktor.json
+        implementation deps.kotlin.ktor.serialization
+        implementation deps.kotlin.serializer.common
+
+        implementation deps.logger.common
+        implementation deps.kotlinStdlibExtersion.runtime
+      }
+    }
+    commonTest {
+      dependencies {
+        implementation deps.kotlin.test.common
+        implementation deps.kotlin.test.commonAnnotations
+      }
+    }
+    jvmMain {
+      dependencies {
+        implementation deps.kotlin.stdlib.jdk
+
+        implementation deps.kotlin.coroutines.jdk
+        implementation deps.kotlin.serializer.jvm
+
+        implementation deps.kotlin.ktor.jvm
+        implementation deps.kotlin.ktor.clientOkhttp
+        implementation deps.kotlin.ktor.loggingJvm
+        implementation deps.kotlin.ktor.serializationJvm
+        implementation "org.slf4j:slf4j-nop:1.7.2"
+      }
+    }
+    jvmTest {
+      dependencies {
+        implementation deps.kotlin.test.junit
+        implementation deps.junit
+      }
+    }
+  }
+
+  targets {
+    targetFromPreset(presets.jvm, 'jvm')
+  }
+
+}
+
+apply from: "$rootDir/gradle/gradle-mvn-push.gradle"

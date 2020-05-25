@@ -1,0 +1,224 @@
+ext.versions = [
+        androidCompileSdkVersion: 29,
+        androidBuildToolsVersion: "29.0.2",
+        kotlin: '1.3.71',
+        kotlinCoroutines: '1.3.5',
+        compileSdk: 29,
+        idea: '2019.2',
+        ideaKotlin: '1.3.61',
+        dokka: '0.9.18',
+        androidxSqlite: '2.1.0',
+        minSdk: 15,
+        targetSdk: 29,
+        autoValue: '1.6.2',
+        schemaCrawler: '14.16.04.01-java7',
+        sqldelight: '1.3.0',
+        moshi: '1.9.2',
+        stately: '1.0.2',
+        sqliter: '0.6.8',
+        testhelp: '0.2.9',
+        sqljs: '1.0.0',
+        paging: '2.1.0',
+        lifecycleVersion: '2.2.0-alpha01',
+        logger: '0.0.2-SNAPSHOT',
+        kotlinStdlibExtersion: '0.0.3',
+        junitVersion  : '4.12',
+        mockitoVersion  : '2.8.9',
+        hamcrestVersion  : "1.3",
+        archTestingVersion  : "2.0.0",
+        powermockVersion: '1.6.5',
+        robolectricVersion: '4.3-beta-1',
+        espressoVersionX: '3.2.0-beta01',
+        androidXTestCoreVersion: '1.2.0-beta01',
+        ktor: '1.3.1',
+        serializer: '0.20.0',
+]
+
+ext.deps = [
+        plugins: [
+                android: 'com.android.tools.build:gradle:3.6.3',
+                androidDependency: 'com.android.tools.build:gradle:3.4.1',
+                kotlin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+                dokka: "org.jetbrains.dokka:dokka-gradle-plugin:${versions.dokka}",
+                download: "de.undercouch:gradle-download-task:3.4.2",
+                intellij: "gradle.plugin.org.jetbrains.intellij.plugins:gradle-intellij-plugin:0.4.16",
+                grammarKitComposer: "com.alecstrong:grammar-kit-composer:0.1.3",
+                markdown: "org.kordamp.gradle:markdown-gradle-plugin:2.0.0",
+                markdownParsing: "org.parboiled:parboiled-java:1.3.1",
+                publish: "com.vanniktech:gradle-maven-publish-plugin:0.11.1",
+                aRouterRegister: "com.alibaba:arouter-register:1.0.2",
+                sqlDelight: "com.squareup.sqldelight:gradle-plugin:${versions.sqldelight}",
+                serializer: "org.jetbrains.kotlin:kotlin-serialization:${versions.kotlin}",
+        ],
+        kotlin: [
+                stdlib: [
+                        common: "org.jetbrains.kotlin:kotlin-stdlib-common:${versions.kotlin}",
+                        jdk: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}",
+                        js: "org.jetbrains.kotlin:kotlin-stdlib-js:${versions.kotlin}",
+                ],
+                test: [
+                        common: "org.jetbrains.kotlin:kotlin-test-common:${versions.kotlin}",
+                        commonAnnotations: "org.jetbrains.kotlin:kotlin-test-annotations-common:${versions.kotlin}",
+                        junit: "org.jetbrains.kotlin:kotlin-test-junit:${versions.kotlin}",
+                        js: "org.jetbrains.kotlin:kotlin-test-js:${versions.kotlin}",
+                ],
+                'coroutines': [
+                        'common': "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:${versions.kotlinCoroutines}",
+                        'jdk': "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinCoroutines}",
+                        'js': "org.jetbrains.kotlinx:kotlinx-coroutines-core-js:${versions.kotlinCoroutines}",
+                        // TODO: Revert to main version once multithreaded coroutines are supported in a release build
+                        'native': "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${versions.kotlinCoroutines}-native-mt",
+                ],
+                reflect: "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlin}",
+                'serializer': [
+                        'common': "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:${versions.serializer}",
+                        'jvm': "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${versions.serializer}",
+                ],
+                'ktor': [
+                        'core': "io.ktor:ktor-client-core:${versions.ktor}",
+                        'jvm': "io.ktor:ktor-client-core-jvm:${versions.ktor}",
+                        'clientOkhttp': "io.ktor:ktor-client-okhttp:${versions.ktor}",
+                        'logging': "io.ktor:ktor-client-logging:${versions.ktor}",
+                        'loggingJvm': "io.ktor:ktor-client-logging-jvm:${versions.ktor}",
+                        'json': "io.ktor:ktor-client-json:${versions.ktor}",
+                        'serialization': "io.ktor:ktor-client-serialization:${versions.ktor}",
+                        'serializationJvm': "io.ktor:ktor-client-serialization-jvm:${versions.ktor}",
+                ],
+        ],
+        test : [
+                junit                   : "junit:junit:${versions.junitVersion}",
+                mockitoCore                   : "org.mockito:mockito-core:${versions.mockitoVersion}",
+                hamcrest                   : "org.hamcrest:hamcrest-all:${versions.hamcrestVersion}",
+                archCoreTesting                   : "androidx.arch.core:core-testing:${versions.archTestingVersion}",
+                robolectric                   : "org.robolectric:robolectric:${versions.robolectricVersion}",
+                robolectricAnnotations                   : "org.robolectric:annotations:${versions.robolectricVersion}",
+                espressoCoreX                   : "androidx.test.espresso:espresso-core:${versions.espressoVersionX}",
+                espressoContrib                   : "androidx.test.espresso:espresso-contrib:${versions.espressoVersionX}",
+                espressoIntents                   : "androidx.test.espresso:espresso-intents:${versions.espressoVersionX}",
+                androidXTestCore         : "androidx.test:core:${versions.androidXTestCoreVersion}",
+                androidXTestCoreKTX         : "androidx.test:core-ktx:${versions.androidXTestCoreVersion}",
+                androidXRunner                  : "androidx.test:runner:1.1.0",
+                androidXTestExt               : "androidx.test.ext:junit:1.1.0",
+                androidXExtJunitKTX         : "androidx.test.ext:junit-ktx:1.1.1-beta01",
+                androidXTestRules         : "androidx.test:rules:1.1.0",
+                powerMockModuleJunit4                           : "org.powermock:powermock-module-junit4:${versions.powermockVersion}",
+                powerMockModuleJunit4Rule                       : "org.powermock:powermock-module-junit4-rule:${versions.powermockVersion}",
+                powerMockAPIMockid                              : "org.powermock:powermock-api-mockito:${versions.powermockVersion}",
+                powerMockClassloadingXStream                    : "org.powermock:powermock-classloading-xstream:${versions.powermockVersion}",
+
+
+        ],
+        // JetPack
+        jetpack: [
+                appcompatX            : "androidx.appcompat:appcompat:1.1.0",
+                androidXCoreKTXX            : 'androidx.core:core-ktx:1.1.0',
+                constraintLayoutX       : "androidx.constraintlayout:constraintlayout:1.1.3",
+                recyclerViewX         : 'androidx.recyclerview:recyclerview:1.1.0',
+                cardViewX               : 'androidx.cardview:cardview:1.0.0',
+                lifecycleExtensionsX       : "androidx.lifecycle:lifecycle-extensions:${versions.lifecycleVersion}",
+                lifecycleLivedataKTXX       : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycleVersion}",
+                lifecycleViewmodelKTXX       : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycleVersion}",
+                navigationFragmentKTXX       : "androidx.navigation:navigation-fragment-ktx:${versions.lifecycleVersion}",
+                navigationUIKTXX       : "androidx.navigation:navigation-ui-ktx:2.0.0",
+                annotationsX            : "androidx.annotation:annotation:1.1.0",
+                viewPager2              : "androidx.viewpager2:viewpager2:1.0.0",
+                paging: [
+                        'runtime': "androidx.paging:paging-runtime:${versions.paging}",
+                        'common': "androidx.paging:paging-common:${versions.paging}",
+                        'rxJava': "androidx.paging:paging-rxjava2:${versions.paging}",
+                ],
+        ],
+        kotlinPoet: 'com.squareup:kotlinpoet:1.5.0',
+        junit: 'junit:junit:4.12',
+        truth: 'com.google.truth:truth:0.42',
+        bugsnag: 'com.bugsnag:bugsnag:2.0.0',
+        intellijCore: fileTree(dir: "$rootDir/lib/intellij-core/lib", include: [
+                'idea.jar', 'openapi.jar', 'util.jar', 'trove4j.jar', 'extensions.jar',
+                'picocontainer-1.2.jar', 'jdom.jar', 'asm-all-7.0.1.jar', 'automaton-1.12-1.jar',
+                'platform-api.jar', 'platform-impl.jar', 'platform-util-ui.jar', 'java-api.jar',
+        ]),
+        intellijJavaPlugin: fileTree(dir: "$rootDir/lib/intellij-core/plugins/java/lib", include: [
+                'java-api.jar',
+        ]),
+        sqlitePsi: "com.alecstrong:sqlite-psi-core:0.2.1",
+        moshi: "com.squareup.moshi:moshi:$versions.moshi",
+        moshiKotlinCodegen: "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi",
+        sqliteJdbc: "org.xerial:sqlite-jdbc:3.21.0.1",
+        robolectric: 'org.robolectric:robolectric:4.1',
+        autoValue: "com.google.auto.value:auto-value:$versions.autoValue",
+        autoValueAnnotations: "com.google.auto.value:auto-value-annotations:$versions.autoValue",
+        rxJava2: "io.reactivex.rxjava2:rxjava:2.2.5",
+        guava: "com.google.guava:guava:23.0",
+        schemaCrawler: [
+                tools: "us.fatehi:schemacrawler-tools:$versions.schemaCrawler",
+                sqlite: "us.fatehi:schemacrawler-sqlite:$versions.schemaCrawler",
+        ],
+        objectDiff: "de.danielbechler:java-object-diff:0.95",
+        sqliter: "co.touchlab:sqliter:$versions.sqliter",
+        sqljs: "sql.js",
+        stately: [
+                'core': "co.touchlab:stately-common:$versions.stately",
+                'concurrency': "co.touchlab:stately-concurrency:$versions.stately",
+                'collections': "co.touchlab:stately-collections:$versions.stately",
+        ],
+        testhelp: "co.touchlab:testhelp:$versions.testhelp",
+
+        //RxJava
+        rxJava                                                    : "io.reactivex.rxjava2:rxjava:2.1.12",
+        rxAndroid                                                 : "io.reactivex.rxjava2:rxandroid:2.0.2",
+        // 异步权限获取
+        rxPermissions                                             : "com.github.tbruyelle:rxpermissions:0.10.2",
+        //RxBinding
+        rxBinding                                                         : "com.jakewharton.rxbinding2:rxbinding:2.0.0",
+        //Network
+        okHttp                                                            : "com.squareup.okhttp3:okhttp:3.10.0",
+        okHttpLoggingInterceptor                          : "com.squareup.okhttp3:logging-interceptor:3.8.1",
+        retrofit                                                          : "com.squareup.retrofit2:retrofit:2.4.0",
+        retrofitConverterGson                                                    : "com.squareup.retrofit2:converter-gson:2.4.0",
+        retrofitAdapterRxJava                                                    : "com.squareup.retrofit2:adapter-rxjava2:2.4.0",
+        //glide图片加载
+        glide                                                            : "com.github.bumptech.glide:glide:3.7.0",
+        glideCompiler                                                    : "com.github.bumptech.glide:compiler:4.8.0",
+        //json解析
+        gson                                                              : "com.google.code.gson:gson:2.8.2",
+        //RecyclerView的DataBinding套装
+        bindingCollectionAdapter                                          : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:2.2.0",
+        bindingCollectionAdapterRecyclerView                             : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:2.2.0",
+        // 状态栏库 ImmersionBar
+        immersionBar                                      : "com.gyf.immersionbar:immersionbar:3.0.0",
+        // RecycleView帮助类
+        BRVA                                                  : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.3',
+        // LeakCanary
+        leakCanaryDebug                                            : "com.squareup.leakcanary:leakcanary-android:1.6.2",
+        leakCanaryRelease                                            : "com.squareup.leakcanary:leakcanary-android-no-op:1.6.2",
+        // ARouter
+        aRouterAPI                                            : "com.alibaba:arouter-api:1.5.0",
+        aRouterCompiler                                       : "com.alibaba:arouter-compiler:1.2.2",
+        // 二维码框架
+        zXingCore                                       : "com.google.zxing:core:3.3.3",
+        // 图片选择框架
+        boxing                                            : "com.bilibili:boxing:1.0.4",
+        boxingImpl                                            : "com.bilibili:boxing-impl:1.0.4",
+        // 图表框架
+        mpAndroidChart                                            : "com.github.PhilJay:MPAndroidChart:v3.0.1",
+        // 数据库框架GreenDAO
+        greenDAO                                            : "org.greenrobot:greendao:3.2.2",
+        greenDAOGenerator                                            : "org.greenrobot:greendao-generator:3.2.2",
+        greenDAOPlugin                                            : "org.greenrobot:greendao-gradle-plugin:3.2.2",
+        bugly                                            : "com.tencent.bugly:crashreport:2.8.6.0",
+        // SqlDelight
+        sqlDelight: [
+                'androidDriver': "com.squareup.sqldelight:android-driver:${versions.sqldelight}",
+                'jvmDriver': "com.squareup.sqldelight:sqlite-driver:${versions.sqldelight}",
+
+        ],
+        logger: [
+                'common': "tech.lihz.multi.logger:kotlin-multi-logger:${versions.logger}",
+                'jvm': "tech.lihz.multi.logger:kotlin-multi-logger-jvm:${versions.logger}",
+                'androidMarsPrinter': "tech.lihz.multi.logger:printer-android-mars:${versions.logger}",
+        ],
+        kotlinStdlibExtersion: [
+                'runtime': "tech.lihz.multi.kotlin:kotlin-stdlib-extension:${versions.kotlinStdlibExtersion}",
+                'jvm': "tech.lihz.multi.kotlin:kotlin-stdlib-extension-jvm:${versions.kotlinStdlibExtersion}",
+        ],
+]

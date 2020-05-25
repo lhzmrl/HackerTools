@@ -1,0 +1,66 @@
+buildscript {
+  apply from: "$rootDir/gradle/dependencies.gradle"
+
+  repositories {
+    mavenCentral()
+    google()
+    jcenter()
+    gradlePluginPortal()
+    maven {
+      url 'https://jitpack.io'
+    }
+  }
+
+  dependencies {
+    classpath deps.plugins.download
+    classpath deps.plugins.kotlin
+    classpath deps.plugins.dokka
+    classpath deps.plugins.intellij
+    classpath deps.plugins.android
+    classpath deps.plugins.markdown
+    classpath deps.plugins.markdownParsing
+    classpath deps.plugins.grammarKitComposer
+    classpath deps.plugins.publish
+    classpath deps.plugins.serializer
+
+  }
+}
+
+apply from: "$rootDir/gradle/updateDependencies.gradle"
+apply from: "$rootDir/gradle/dependencies.gradle"
+
+allprojects {
+  repositories {
+    mavenCentral()
+    google()
+    jcenter()
+  }
+
+  tasks.withType(Test) {
+    testLogging {
+      events = ["failed", "skipped", "passed"]
+      exceptionFormat "full"
+    }
+  }
+
+  if (plugins.hasPlugin("org.jetbrains.kotlin.jvm")) {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  plugins.withId("com.android.library") {
+    extensions.getByName("android").compileOptions {
+      sourceCompatibility JavaVersion.VERSION_1_8
+      targetCompatibility JavaVersion.VERSION_1_8
+    }
+  }
+
+  tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
+    kotlinOptions {
+      jvmTarget = "1.8"
+    }
+  }
+
+  group = GROUP
+  version = VERSION_NAME
+}
