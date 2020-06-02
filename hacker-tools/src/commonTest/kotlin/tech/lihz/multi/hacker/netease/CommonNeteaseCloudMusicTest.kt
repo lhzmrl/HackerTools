@@ -33,7 +33,7 @@ abstract class CommonNeteaseCloudMusicTest {
     protected suspend fun increaseListenedSongsCount() {
         val recommends = neteaseCloudMusic.recommend()
         val tracks = ArrayList<PlayListTrack>()
-        for (recommend in recommends) {
+        for (recommend in recommends.reversed()) {
             try {
                 val playList = neteaseCloudMusic.getPlayListDetail(recommend.id)
                 delay(500)
@@ -47,7 +47,16 @@ abstract class CommonNeteaseCloudMusicTest {
                 println(e)
             }
         }
-//        neteaseCloudMusic.recordSongsPlayed(tracks)
+        neteaseCloudMusic.recordSongsPlayed(tracks)
+    }
+
+    protected suspend fun recordTopListListened(id: Long) {
+        val playList = neteaseCloudMusic.getPlayListDetail(id)
+        println("==========================================" + playList.id + "==========================================")
+        playList.tracks?.forEach {
+            println(it.name)
+        }
+        neteaseCloudMusic.recordSongsPlayed(playList.tracks!!)
     }
 
 }

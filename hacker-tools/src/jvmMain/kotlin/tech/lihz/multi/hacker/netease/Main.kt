@@ -30,12 +30,18 @@ fun main() = runBlocking {
     }
     var i = 0
     var isSuccess = false
+    delayTime = 2000
     while (i < 3) {
-        if (neteaseCloudMusic.recordSongsPlayed(songs)) {
-            isSuccess = true
-            break
+        delay(delayTime)
+        try {
+            if (neteaseCloudMusic.recordSongsPlayed(songs)) {
+                isSuccess = true
+            }
+            i++
+        } catch (e: Exception) {
+            println(e)
+            delayTime += 1000
         }
-        i++
     }
     if (isSuccess) {
         println("上传成功")
