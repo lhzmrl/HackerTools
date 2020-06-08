@@ -1,6 +1,6 @@
 package tech.lhzmrl.multi.hacker.netease
 
-import tech.lihz.multi.hacker.netease.model.request.EncryptedNeteaseRequest
+import tech.lhzmrl.multi.hacker.netease.model.request.EncryptedNeteaseRequest
 
 fun createSecretKey(): String {
     val secretKey = StringBuilder()

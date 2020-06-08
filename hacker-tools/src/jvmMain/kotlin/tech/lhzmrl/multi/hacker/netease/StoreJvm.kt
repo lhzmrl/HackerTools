@@ -2,9 +2,8 @@ package tech.lhzmrl.multi.hacker.netease
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
-import tech.lihz.multi.hacker.netease.model.Token
+import tech.lhzmrl.multi.hacker.netease.model.Token
 import java.io.File
-import java.io.FileOutputStream
 import java.io.FileReader
 import java.io.FileWriter
 

@@ -1,6 +1,6 @@
 package tech.lhzmrl.multi.hacker.netease
 
-import tech.lihz.multi.hacker.netease.model.request.EncryptedNeteaseRequest
+import tech.lhzmrl.multi.hacker.netease.model.request.EncryptedNeteaseRequest
 import tech.lihz.multi.kotlin.extension.util.hexString2Bytes
 import java.math.BigInteger
 import java.util.*

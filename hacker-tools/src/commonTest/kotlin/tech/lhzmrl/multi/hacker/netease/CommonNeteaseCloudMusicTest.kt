@@ -2,7 +2,7 @@ package tech.lhzmrl.multi.hacker.netease
 
 import io.ktor.client.engine.HttpClientEngine
 import kotlinx.coroutines.delay
-import tech.lihz.multi.hacker.netease.model.response.PlayListTrack
+import tech.lhzmrl.multi.hacker.netease.model.response.PlayListTrack
 
 abstract class CommonNeteaseCloudMusicTest {
 
@@ -11,7 +11,7 @@ abstract class CommonNeteaseCloudMusicTest {
     val neteaseCloudMusic = NeteaseCloudMusic(getHttpClientEngine())
 
     protected suspend fun login() {
-        neteaseCloudMusic.login(_root_ide_package_.tech.lhzmrl.multi.hacker.netease.AccountConfig.NAME, _root_ide_package_.tech.lhzmrl.multi.hacker.netease.AccountConfig.PASSWORD)
+        neteaseCloudMusic.login(AccountConfig.NAME, AccountConfig.PASSWORD)
     }
 
     protected suspend fun recommend() {

@@ -57,7 +57,6 @@ class NeteaseCloudMusicTest : CommonNeteaseCloudMusicTest() {
      */
     @Test
     fun testIncreaseListenedSongsByFM() = runBlocking {
-        val neteaseCloudMusic = NeteaseCloudMusic(OkHttp.create())
         var count = 0
         var delayTime = 0L
         val songs = ArrayList<PlayListTrack>()
@@ -123,8 +122,24 @@ class NeteaseCloudMusicTest : CommonNeteaseCloudMusicTest() {
 //        recordTopListListened(120001)
 //        // 台湾Hito排行榜
 //        recordTopListListened(112463)
-        // Beatport全球电子舞曲榜
-        recordTopListListened(3812895)
+//        // Beatport全球电子舞曲榜
+//        recordTopListListened(3812895)
+//        // 云音乐ACG动画榜
+//        recordTopListListened(3001835560)
+//        // 韩国Mnet排行榜周榜,
+//        recordTopListListened(60255)
+//        // 韩国Melon原声周榜,
+//        recordTopListListened(3733003)
+//        // UK排行榜周榜
+//        recordTopListListened(180106)
+//        // 电竞音乐榜
+//        recordTopListListened(2006508653)
+//        // 云音乐ACG游戏榜
+//        recordTopListListened(3001795926)
+//        // 云音乐ACG VOCALOID榜
+//        recordTopListListened(3001890046)
+        // 云音乐ACG VOCALOID榜
+        recordTopListListened(3001890046)
     }
 
 }

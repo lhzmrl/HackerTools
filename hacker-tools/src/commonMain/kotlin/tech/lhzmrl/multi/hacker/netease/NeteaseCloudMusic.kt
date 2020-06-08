@@ -21,16 +21,12 @@ import kotlinx.serialization.SerializationStrategy
 import kotlinx.serialization.builtins.list
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
-import tech.lihz.multi.hacker.netease.model.Token
-import tech.lihz.multi.hacker.netease.model.request.*
-import tech.lihz.multi.hacker.netease.model.response.*
+import tech.lhzmrl.multi.hacker.netease.model.Token
+import tech.lhzmrl.multi.hacker.netease.model.request.*
+import tech.lhzmrl.multi.hacker.netease.model.response.*
 import tech.lihz.multi.kotlin.extension.security.md5
 import tech.lihz.multi.logger.DebugPrinter
 import tech.lihz.multi.logger.Logger
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
-import kotlin.collections.List
-import kotlin.collections.forEach
 import kotlin.collections.set
 import kotlin.coroutines.CoroutineContext
 
@@ -89,7 +85,7 @@ class NeteaseCloudMusic(httpClientEngine: HttpClientEngine) : CoroutineScope {
         if (token.expires >= currentTimeMillis()) {
             return
         }
-        login(_root_ide_package_.tech.lhzmrl.multi.hacker.netease.AccountConfig.NAME, _root_ide_package_.tech.lhzmrl.multi.hacker.netease.AccountConfig.PASSWORD)
+        login(AccountConfig.NAME, AccountConfig.PASSWORD)
     }
 
     suspend fun recommend(): List<Recommend> {

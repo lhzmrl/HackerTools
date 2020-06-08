@@ -1,6 +1,6 @@
 package tech.lhzmrl.multi.hacker.netease
 
-import tech.lihz.multi.hacker.netease.model.Token
+import tech.lhzmrl.multi.hacker.netease.model.Token
 
 expect fun storeToken(token: Token): Boolean
 

@@ -3,7 +3,7 @@ package tech.lhzmrl.multi.hacker.netease
 import io.ktor.client.engine.okhttp.OkHttp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import tech.lihz.multi.hacker.netease.model.response.PlayListTrack
+import tech.lhzmrl.multi.hacker.netease.model.response.PlayListTrack
 import tech.lihz.multi.logger.Logger
 
 const val LISTEN_COUNT = 300
